@@ -9,12 +9,12 @@ pipeline {
         }
         stage('Backend dockerfile build') {
             steps {
-                sh 'cd /backend && docker build -t python-app .'
+                sh 'cd /var/lib/jenkins/workspace/app deploy/backend && docker build -t python-app .'
             }
         }
         stage('Frontend dockerfile build') {
             steps {
-                sh 'cd ../frontend && docker build -t node-app .'
+                sh 'cd /var/lib/jenkins/workspace/app deploy/frontend && docker build -t node-app .'
             }
         }
     }
