@@ -27,7 +27,7 @@ pipeline {
         stage('Docker Push') {
               steps {
                   sh "docker tag python-app kedar1704/python-app && docker push kedar1704/python-app"
-                  sh "docker tag node-app kedar1704/python-app && docker push kedar1704/node-app"
+                  sh "docker tag node-app kedar1704/node-app && docker push kedar1704/node-app"
           }
         }
     }
