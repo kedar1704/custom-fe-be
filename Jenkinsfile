@@ -30,5 +30,15 @@ pipeline {
                   sh "docker tag node-app kedar1704/node-app && docker push kedar1704/node-app"
           }
         }
+        stage('deploy backend to kubernetes') {
+            steps {
+                sh 'cd /var/lib/jenkins/workspace/app_deploy/backend && kubectl apply -f deployment.yaml && kubectl apply -f service.yaml'
+            }
+        }
+        stage('deploy frontend to kubernetes') {
+            steps {
+                sh 'cd /var/lib/jenkins/workspace/app_deploy/frontend && kubectl apply -f deployment.yaml && kubectl apply -f service.yaml'
+            }
+        }
     }
 }
