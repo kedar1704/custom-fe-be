@@ -40,5 +40,11 @@ pipeline {
                 sh 'cd /var/lib/jenkins/workspace/app_deploy/frontend && kubectl apply -f deployment.yaml && kubectl apply -f service.yaml'
             }
         }
+        stage('get all') {
+            steps {
+                sh 'kubectl get deployment'
+                sh 'kubectl get svc'
+            }
+        }
     }
 }
