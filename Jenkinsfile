@@ -17,5 +17,11 @@ pipeline {
                 sh 'cd /var/lib/jenkins/workspace/app_deploy/frontend && docker build -t node-app .'
             }
         }
+        stage('Docker Push') {
+              steps {
+                withCredentials([usernamePassword(credentialsId: 'dockerhub_creds', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
+                  sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
+        }
+      }
     }
 }
