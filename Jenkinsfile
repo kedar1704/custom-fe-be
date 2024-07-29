@@ -32,12 +32,12 @@ pipeline {
         }
         stage('deploy backend to kubernetes') {
             steps {
-                sh 'cd /var/lib/jenkins/workspace/app_deploy/backend && kubectl apply -f deployment.yaml && kubectl apply -f service.yaml'
+                sh 'cd /var/lib/jenkins/workspace/app_deploy/backend && kubectl apply -f deployment.yaml && kubectl apply -f service.yaml --validate=false'
             }
         }
         stage('deploy frontend to kubernetes') {
             steps {
-                sh 'cd /var/lib/jenkins/workspace/app_deploy/frontend && kubectl apply -f deployment.yaml && kubectl apply -f service.yaml'
+                sh 'cd /var/lib/jenkins/workspace/app_deploy/frontend && kubectl apply -f deployment.yaml && kubectl apply -f service.yaml --validate=false'
             }
         }
         stage('get all') {
