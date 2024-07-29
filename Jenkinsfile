@@ -33,8 +33,8 @@ pipeline {
         stage('get all') {
             steps {
                 kubeconfig(credentialsId: 'kube_config', serverUrl: 'https://DF508AB5F6EE4C42AC093F0F55A601C2.gr7.ap-south-1.eks.amazonaws.com') {
-                    kubectl get deployment
-                    kubectl get svc
+                    sh 'kubectl get deployment'
+                    sh 'kubectl get svc'
                 }
             }
         }
